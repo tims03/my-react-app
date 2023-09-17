@@ -16,9 +16,8 @@ const App = () => {
   const [accessibilityMode, setIsSwitchOn] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const handleGenerateScheduleClick = (data) => {
+  const handleGenerateScheduleClick = () => {
     setIsPopupOpen(true);
-    console.log(data);
   };
 
   const handleSwitchChange = () => {
@@ -61,12 +60,11 @@ const App = () => {
     console.log(requestData);
     axios.post('/submit', requestData)
       .then((response) => {
-        handleGenerateScheduleClick(response.data);
+        console.log('Data sent successfully:', response.data);
       })
       .catch((error) => {
         console.error('Error sending data:', error);
       });
-      
   };
 
   return (
@@ -197,7 +195,7 @@ const App = () => {
 
       <div className="col-md-6 mb-3">
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
-        <button className="btn btn-dark" onClick={submit} style={{ marginLeft: '10px' }}>Generate Schedule</button>
+        <button className="btn btn-dark" onClick={handleGenerateScheduleClick} style={{ marginLeft: '10px' }}>Generate Schedule</button>
         <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
           <div className="popup-container">
             <div className="popup-body">
@@ -210,7 +208,7 @@ const App = () => {
           <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
           <span className="slider round"></span>
         </label>
-        {/* {accessibilityMode && <img src={dottedLineImage} alt="Accessible Image" style={{ width: '90px', height: '28px' }}/>} */}
+        {/* <p>Accessibility Mode {accessibilityMode ? 'ON' : 'OFF'}</p> */}
       </div>
 
       <table className="table mt-3">
