@@ -1,3 +1,12 @@
+
+
+body {
+  background-image: url('./Static/background2.svg'); /* Adjust the path as needed */
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
 .App {
   text-align: center;
 }

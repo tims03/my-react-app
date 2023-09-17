@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
+import './Static/dotted_line.jpg';
 
 const App = () => {
   const [subject, setSubject] = useState('');
@@ -147,7 +148,7 @@ const App = () => {
           <option value="NR">NR - Natural</option>
         </select>
       </div>
-      <div className="mb-3 col-md-6">
+      <div className="mb-3 col-md-6" >
         <label htmlFor="classNumber" className="form-label">Class Number:</label>
         <input
           type="text"
