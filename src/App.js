@@ -4,7 +4,9 @@ import Popup from 'reactjs-popup';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
-import dottedLineImage from './Static/dotted_line.png';
+import image1 from './Static/VTHacksLogo.png';
+import image2 from './Static/mlh-logo-color.png';
+import image3 from './Static/ezgif.com-webp-to-png.png';
 
 const App = () => {
   const [subject, setSubject] = useState('');
@@ -220,13 +222,18 @@ const App = () => {
               <td style={{verticalAlign: "middle"}}>{row.classNumber}</td>
               <td style={{ textAlign: 'right'}}>
                 <button onClick={() => handleDeleteRow(index)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      {/* Add a new container for the images at the bottom */}
+      <div className="img-container"> 
+          <img src={image1} alt="Image 1" className="vt-icon" />
+          <img src={image3} alt="Image 3" className="git-icon" />
+          <img src={image2} alt="Image 2" className="mlh-icon" />
+      </div>
     </div>
-
   );
 };
 

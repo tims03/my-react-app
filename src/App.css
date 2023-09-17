@@ -96,37 +96,49 @@ input:checked + .slider:before {
   transform: translateX(26px);
 }
 
-.popup-content {
-  margin: auto;
-  background: rgb(255, 255, 255);
-  width: 50%;
-  padding: 5px;
-}
-.popup-arrow {
-  color: rgb(255, 255, 255);
-}
-[role='tooltip'].popup-content {
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+/* In your App.css or a separate CSS file */
+.git-icon {
+  width:70px; /* Adjust the size as needed */
+  height: 70px;
+  background: transparent; /* Remove white background */
+  margin-right: 5%; /* Add some spacing between the icons */
+  margin-bottom: 1%;
 }
 
-.popup-overlay {
-  background: rgba(0, 0, 0, 0.5);
+/* In your App.css or a separate CSS file */
+.vt-icon {
+  width:228px; /* Adjust the size as needed */
+  height: 70px;
+  background: transparent; /* Remove white background */
+  margin-right: 5%; /* Add some spacing between the icons */
+  margin-bottom: 1%;
 }
-[data-popup='tooltip'].popup-overlay {
-  background: transparent;
+
+/* In your App.css or a separate CSS file */
+.mlh-icon {
+  width:165px; /* Adjust the size as needed */
+  height: 70px;
+  background: transparent; /* Remove white background */
+  margin-right: 5%; /* Add some spacing between the icons */
+  margin-bottom: 1%;
 }
 
 
-/* Color Pallette */
-/* :root {
-  --beaver: #b98b73ff;
-  --buff: #cb997eff;
-  --desert-sand: #ddbea9ff;
-  --champagne-pink: #ffe8d6ff;
-  --dun: #d4c7b0ff;
-  --ash-gray: #b7b7a4ff;
-  --sage: #a5a58dff;
-  --reseda-green: #6b705cff;
-  --black-olive: #3f4238ff;
-} */
+/* In your App.css or a separate CSS file */
+.img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(233, 233, 233, 0); /* Adjust the background color and opacity as needed */
+}
+
+
+
+
+
+
+
