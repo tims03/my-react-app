@@ -15,8 +15,9 @@ const App = () => {
   const [accessibilityMode, setIsSwitchOn] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  const handleGenerateScheduleClick = () => {
+  const handleGenerateScheduleClick = (data) => {
     setIsPopupOpen(true);
+    console.log(data);
   };
 
   const handleSwitchChange = () => {
@@ -59,11 +60,12 @@ const App = () => {
     console.log(requestData);
     axios.post('/submit', requestData)
       .then((response) => {
-        console.log('Data sent successfully:', response.data);
+        handleGenerateScheduleClick(response.data);
       })
       .catch((error) => {
         console.error('Error sending data:', error);
       });
+      
   };
 
   return (
@@ -193,10 +195,9 @@ const App = () => {
 
       <div className="col-md-6 mb-3">
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
-        <button className="btn btn-dark" onClick={handleGenerateScheduleClick} style={{ marginLeft: '10px' }}>Generate Schedule</button>
+        <button className="btn btn-dark" onClick={submit} style={{ marginLeft: '10px' }}>Generate Schedule</button>
         <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
           <div>
-            {/* Your popup content goes here */}
             <p>This is the popup content.</p>
           </div>
         </Popup>
