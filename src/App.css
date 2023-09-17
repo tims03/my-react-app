@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+@font-face {
+  font-family: 'Eiko';
+  src: url('../Static/Eiko.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dryouth';
+  src: url('../Static/Dryouth.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+:root {
+  /* Define CSS HEX variables for the color palette */
+  --beaver: #b98b73ff;
+  --buff: #cb997eff;
+  --desert-sand: #ddbea9ff;
+  --champagne-pink: #ffe8d6ff;
+  --dun: #d4c7b0ff;
+  --ash-gray: #b7b7a4ff;
+  --sage: #a5a58dff;
+  --reseda-green: #6b705cff;
+  --black-olive: #3f4238ff;
+}
+
+/* Apply the colors to your elements */
+/* .container {
+  background: var(--desert-sand);
+}
+
+h1 {
+  color: var(--champagne-pink);
+}
+
+.form-label,
+.form-control {
+  color: var(--ash-gray);
+}
+
+.btn-dark {
+  background-color: var(--black-olive);
+  color: white;
+}
+
+.table {
+  background-color: var(--buff);
+} */

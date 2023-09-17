@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
+import './App.css';
 
 const App = () => {
   const [subject, setSubject] = useState('');
@@ -27,153 +28,123 @@ const App = () => {
     }
   };
 
+  const handleDeleteRow = (index) => {
+    const updatedTableData = [...tableData];
+    updatedTableData.splice(index, 1);
+    setTableData(updatedTableData);
+  };
+
   return (
     <div className="container mt-5" style={{ background: '#e9e9e9' }}>
     <div className="row d-flex justify-content-center">
-      <h1 className="text-center" style={{ fontSize: '50px', fontWeight: 'bold' }}>Class Schedule</h1>
+      <h1 className="text-center" style={{ fontFamily: 'Eiko', fontSize: '50px'}}>Class Schedule</h1>
       <div className="mb-3 col-md-6">
         <label htmlFor="subject" className="form-label">Subject:</label>
         <select id="subject" className="form-select" value={subject} onChange={handleSubjectChange}>
           <option value="">Select a Subject</option>
-          <option value="AOE">AOE</option>
-          <option value="ALCE">ALCE</option>
-          <option value="AAEC">AAEC</option>
-          <option value="ALS">ALS</option>
-          <option value="AINS">AINS</option>
-          <option value="APSC">APSC</option>
-          <option value="APS">APS</option>
-          <option value="AHRM">AHRM</option>
-          <option value="ARBC">ARBC</option>
-          <option value="ARCH">ARCH</option>
-          <option value="AAD">AAD</option>
-          <option value="ART">ART</option>
-          <option value="BDS">BDS</option>
-          <option value="BCHM">BCHM</option>
-          <option value="BIOL">BIOL</option>
-          <option value="BSE">BSE</option>
-          <option value="BMVS">BMVS</option>
-          <option value="BMSP">BMSP</option>
-          <option value="BMES">BMES</option>
-          <option value="BC">BC</option>
-          <option value="BUS">BUS</option>
-          <option value="BIT">BIT</option>
-          <option value="EDCT">EDCT</option>
-          <option value="CHE">CHE</option>
-          <option value="CHEM">CHEM</option>
-          <option value="CHN">CHN</option>
-          <option value="CINE">CINE</option>
-          <option value="CEE">CEE</option>
-          <option value="CLA">CLA</option>
-          <option value="COS">COS</option>
-          <option value="COMM">COMM</option>
-          <option value="CMST">CMST</option>
-          <option value="CMDA">CMDA</option>
-          <option value="CS">CS</option>
-          <option value="CEM">CEM</option>
-          <option value="CONS">CONS</option>
-          <option value="CEP">CEP</option>
-          <option value="CRIM">CRIM</option>
-          <option value="CSES">CSES</option>
-          <option value="DASC">DASC</option>
-          <option value="DANC">DANC</option>
-          <option value="ECON">ECON</option>
-          <option value="EDCO">EDCO</option>
-          <option value="EDCI">EDCI</option>
-          <option value="EDEP">EDEP</option>
-          <option value="ECE">ECE</option>
-          <option value="ENGR">ENGR</option>
-          <option value="ENGE">ENGE</option>
-          <option value="ESM">ESM</option>
-          <option value="ENGL">ENGL</option>
-          <option value="ENT">ENT</option>
-          <option value="ENSC">ENSC</option>
-          <option value="FCS">FCS</option>
-          <option value="FMD">FMD</option>
-          <option value="FIN">FIN</option>
-          <option value="FNAD">FNAD</option>
-          <option value="FA">FA</option>
-          <option value="FIW">FIW</option>
-          <option value="FST">FST</option>
-          <option value="FL">FL</option>
-          <option value="FREC">FREC</option>
-          <option value="VT">VT</option>
-          <option value="FR">FR</option>
-          <option value="GEOG">GEOG</option>
-          <option value="GEOS">GEOS</option>
-          <option value="GER">GER</option>
-          <option value="GR">GR</option>
-          <option value="HEB">HEB</option>
-          <option value="HIST">HIST</option>
-          <option value="HORT">HORT</option>
-          <option value="HTM">HTM</option>
-          <option value="HD">HD</option>
-          <option value="HNFE">HNFE</option>
-          <option value="HUM">HUM</option>
-          <option value="ISE">ISE</option>
-          <option value="IDS">IDS</option>
-          <option value="EDIT">EDIT</option>
-          <option value="ISC">ISC</option>
-          <option value="ITDS">ITDS</option>
-          <option value="IS">IS</option>
-          <option value="ITAL">ITAL</option>
-          <option value="JPN">JPN</option>
-          <option value="JMC">JMC</option>
-          <option value="JUD">JUD</option>
-          <option value="KOR">KOR</option>
-          <option value="LAR">LAR</option>
-          <option value="LAT">LAT</option>
-          <option value="LDRS">LDRS</option>
-          <option value="LAHS">LAHS</option>
-          <option value="MGT">MGT</option>
-          <option value="MKTG">MKTG</option>
-          <option value="MSE">MSE</option>
-          <option value="MATH">MATH</option>
-          <option value="ME">ME</option>
-          <option value="MTRG">MTRG</option>
-          <option value="MN">MN</option>
-          <option value="AROTC">AROTC</option>
-          <option value="MS">MS</option>
-          <option value="AS">AS</option>
-          <option value="MINE">MINE</option>
-          <option value="MUS">MUS</option>
-          <option value="NANO">NANO</option>
-          <option value="NR">NR</option>
-          <option value="NEUR">NEUR</option>
-          <option value="NSEG">NSEG</option>
-          <option value="PSVP">PSVP</option>
-          <option value="PHIL">PHIL</option>
-          <option value="PPE">PPE</option>
-          <option value="PHYS">PHYS</option>
-          <option value="PPWS">PPWS</option>
-          <option value="PSCI">PSCI</option>
-          <option value="PHS">PHS</option>
-          <option value="PORT">PORT</option>
-          <option value="PM">PM</option>
-          <option value="PSYC">PSYC</option>
-          <option value="PR">PR</option>
-          <option value="REAL">REAL</option>
-          <option value="RLCL">RLCL</option>
-          <option value="RED">RED</option>
-          <option value="RUS">RUS</option>
-          <option value="SPES">SPES</option>
-          <option value="SPIA">SPIA</option>
-          <option value="STS">STS</option>
-          <option value="STL">STL</option>
-          <option value="SOC">SOC</option>
-          <option value="SPAN">SPAN</option>
-          <option value="STAT">STAT</option>
-          <option value="SUMA">SUMA</option>
-          <option value="SBIO">SBIO</option>
-          <option value="SYSB">SYSB</option>
-          <option value="EDTE">EDTE</option>
-          <option value="TA">TA</option>
-          <option value="TBMH">TBMH</option>
-          <option value="UNIV">UNIV</option>
-          <option value="UH">UH</option>
-          <option value="REG">REG</option>
-          <option value="UAP">UAP</option>
-          <option value="WATR">WATR</option>
-          <option value="WGS">WGS</option>
+          <option value="AOE">AOE - Aerospace and Ocean Engineering</option>
+          <option value="ALCE">ALCE - Agricultural, Leadership, and Community Education</option>
+          <option value="AAEC">AAEC - Agricultural and Applied Economics</option>
+          <option value="ALS">ALS - Agriculture and Life Sciences</option>
+          <option value="AINS">AINS - American Indian Studies</option>
+          <option value="APSC">APSC - Animal and Poultry Sciences</option>
+          <option value="APS">APS - Appalachian Studies</option>
+          <option value="AHRM">AHRM - Apparel, Housing, and Resource Management</option>
+          <option value="ARBC">ARBC - Arabic</option>
+          <option value="ARCH">ARCH - Architecture</option>
+          <option value="AAD">AAD - Africana Studies</option>
+          <option value="ART">ART - Art and Art History</option>
+          <option value="BDS">BDS - Behavioral Decision Science</option>
+          <option value="BCHM">BCHM - Biochemistry</option>
+          <option value="BIOL">BIOL - Biological Sciences</option>
+          <option value="BSE">BSE - Biological Systems Engineering</option>
+          <option value="BMVS">BMVS - Biomedical & Veterinary Sciences</option>
+          <option value="BMSP">BMSP - Biomedical Sciences and Pathobiology</option>
+          <option value="BMES">BMES - Biomedical Engineering and Sciences</option>
+          <option value="BC">BC - Building Construction</option>
+          <option value="BUS">BUS - Business</option>
+          <option value="BIT">BIT - Business Information Technology</option>
+          <option value="EDCT">EDCT - Career and Technical Education</option>
+          <option value="CHE">CHE - Chemical Engineering</option>
+          <option value="CHEM">CHEM - Chemistry</option>
+          <option value="CHN">CHN - Chinese</option>
+          <option value="CINE">CINE - Cinema</option>
+          <option value="CEE">CEE - Civil and Environmental Engineering</option>
+          <option value="CLA">CLA - Classics</option>
+          <option value="COS">COS - College of Science</option>
+          <option value="COMM">COMM - Communication</option>
+          <option value="CMST">CMST - Communication Studies</option>
+          <option value="CMDA">CMDA - Computational Modeling and Data Analytics</option>
+          <option value="CS">CS - Computer Science</option>
+          <option value="CEM">CEM - Construction Engineering and Management</option>
+          <option value="CONS">CONS - Consumer Studies</option>
+          <option value="CEP">CEP - Counselor Education</option>
+          <option value="CRIM">CRIM - Criminology</option>
+          <option value="CSES">CSES - Crop and Soil Environmental Sciences</option>
+          <option value="DASC">DASC - Dairy Science</option>
+          <option value="DANC">DANC - Dance</option>
+          <option value="ECON">ECON - Economics</option>
+          <option value="EDCO">EDCO - Counselor Education</option>
+          <option value="EDCI">EDCI - Curriculum and Instruction</option>
+          <option value="EDEP">EDEP - Educational Psychology</option>
+          <option value="ECE">ECE - Electrical and Computer Engineering</option>
+          <option value="ENGR">ENGR - Engineering</option>
+          <option value="ENGE">ENGE - Engineering Education</option>
+          <option value="ESM">ESM - Engineering Science and Mechanics</option>
+          <option value="ENGL">ENGL - English</option>
+          <option value="ENT">ENT - Entomology</option>
+          <option value="ENSC">ENSC - Environmental Science</option>
+          <option value="FCS">FCS - Family and Consumer Sciences</option>
+          <option value="FMD">FMD - Fashion Merchandising</option>
+          <option value="FIN">FIN - Finance, Insurance, Business Law</option>
+          <option value="FNAD">FNAD - Fine Arts</option>
+          <option value="FA">FA - Fine Arts</option>
+          <option value="FIW">FIW - Fisheries and Wildlife Sciences</option>
+          <option value="FST">FST - Food Science and Technology</option>
+          <option value="FL">FL - Foreign Language</option>
+          <option value="FREC">FREC - Forest Resources and Environmental Conservation</option>
+          <option value="VT">VT - Veterinary Medicine</option>
+          <option value="FR">FR - French</option>
+          <option value="GEOG">GEOG - Geography</option>
+          <option value="GEOS">GEOS - Geosciences</option>
+          <option value="GER">GER - German</option>
+          <option value="GR">GR - Greek</option>
+          <option value="HEB">HEB - Hebrew</option>
+          <option value="HIST">HIST - History</option>
+          <option value="HORT">HORT - Horticulture</option>
+          <option value="HTM">HTM - Hospitality and Tourism Management</option>
+          <option value="HD">HD - Human Development</option>
+          <option value="HNFE">HNFE - Human Nutrition, Foods and Exercise</option>
+          <option value="HUM">HUM - Humanities</option>
+          <option value="ISE">ISE - Industrial and Systems Engineering</option>
+          <option value="IDS">IDS - Industrial Design</option>
+          <option value="EDIT">EDIT - Instructional Design & Tech</option>
+          <option value="ISC">ISC - Integrated Science</option>
+          <option value="ITDS">ITDS - Interior Design</option>
+          <option value="IS">IS - International Studies</option>
+          <option value="ITAL">ITAL - Italian</option>
+          <option value="JPN">JPN - Japanese</option>
+          <option value="JMC">JMC - Journalism and Mass Communication</option>
+          <option value="JUD">JUD - Judaic Studies</option>
+          <option value="KOR">KOR - Korean</option>
+          <option value="LAR">LAR - Landscape Architecture</option>
+          <option value="LAT">LAT - Latin</option>
+          <option value="LDRS">LDRS - Leadership Studies</option>
+          <option value="LAHS">LAHS - Liberal Arts and Human Sciences</option>
+          <option value="MGT">MGT - Management</option>
+          <option value="MKTG">MKTG - Marketing</option>
+          <option value="MSE">MSE - Materials Science and Engineering</option>
+          <option value="MATH">MATH - Mathematics</option>
+          <option value="ME">ME - Mechanical Engineering</option>
+          <option value="MTRG">MTRG - Meteorology</option>
+          <option value="MN">MN - Military Navy (NROTC)</option>
+          <option value="AROTC">AROTC - Army ROTC</option>
+          <option value="MS">MS - Military Science (AROTC)</option>
+          <option value="AS">AS - Aerospace Studies (AFROTC)</option>
+          <option value="MINE">MINE - Mining and Minerals Engineering</option>
+          <option value="MUS">MUS - Music</option>
+          <option value="NANO">NANO - Nanoscience</option>
+          <option value="NR">NR - Natural</option>
         </select>
       </div>
       <div className="mb-3 col-md-6">
@@ -198,13 +169,17 @@ const App = () => {
           <tr>
             <th>Subject</th>
             <th>Class Number</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {tableData.map((row, index) => (
             <tr key={index}>
-              <td>{row.subject}</td>
-              <td>{row.classNumber}</td>
+              <td style={{verticalAlign: "middle"}}>{row.subject}</td>
+              <td style={{verticalAlign: "middle"}}>{row.classNumber}</td>
+              <td style={{ textAlign: 'right'}}>
+                <button onClick={() => handleDeleteRow(index)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
