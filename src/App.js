@@ -4,6 +4,7 @@ import Popup from 'reactjs-popup';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
+import dottedLineImage from './Static/dotted_line.png';
 
 const App = () => {
   const [subject, setSubject] = useState('');
@@ -201,7 +202,7 @@ const App = () => {
           <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
           <span className="slider round"></span>
         </label>
-        {/* <p>Accessibility Mode {accessibilityMode ? 'ON' : 'OFF'}</p> */}
+        {/* {accessibilityMode && <img src={dottedLineImage} alt="Accessible Image" style={{ width: '90px', height: '28px' }}/>} */}
       </div>
 
       <table className="table mt-3">
