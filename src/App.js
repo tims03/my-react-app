@@ -14,10 +14,11 @@ const App = () => {
   const [tableData, setTableData] = useState([]);
   const [accessibilityMode, setIsSwitchOn] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  var responseData = null;
 
   const handleGenerateScheduleClick = (data) => {
-    setIsPopupOpen(true);
-    console.log(data);
+    submit();
+
   };
 
   const handleSwitchChange = () => {
@@ -57,15 +58,14 @@ const App = () => {
       subjectID: row.classNumber, 
       accessibleRouting: accessibilityMode,
     }));
-    console.log(requestData);
     axios.post('/submit', requestData)
-      .then((response) => {
-        handleGenerateScheduleClick(response.data);
+      .then((response) => {        
+        setIsPopupOpen(true);
       })
       .catch((error) => {
         console.error('Error sending data:', error);
+        setIsPopupOpen(true);
       });
-      
   };
 
   return (
@@ -197,10 +197,42 @@ const App = () => {
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
         <button className="btn btn-dark" onClick={submit} style={{ marginLeft: '10px' }}>Generate Schedule</button>
         <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-          <div>
-            <p>This is the popup content.</p>
+        <div className="popup-content">
+        <div className="center-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Subject</th>
+                  <th>Course No</th>
+                  <th>Instructor</th>
+                  <th>Start Time</th>
+                  <th>End Time</th>
+                  <th>Building</th>
+                  <th>Room</th>
+                  <th>CRN</th>
+                  <th>GPA</th>
+                </tr>
+              </thead>
+              <tbody>
+              {responseData &&
+            responseData[0].map((dataItem, index) => (
+                  <tr key={index}>
+                    <td>{dataItem.subject}</td>
+                    <td>{dataItem.courseNo}</td>
+                    <td>{dataItem.instructor}</td>
+                    <td>{dataItem.startTime}</td>
+                    <td>{dataItem.endTime}</td>
+                    <td>{dataItem.building}</td>
+                    <td>{dataItem.room}</td>
+                    <td>{dataItem.crn}</td>
+                    <td>{dataItem.gpa}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            </div>
           </div>
-        </Popup>
+        </Popup> 
         <label className="switch" style = {{marginLeft: '10px'}}>
           <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
           <span className="slider round"></span>
