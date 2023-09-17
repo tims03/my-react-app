@@ -7,6 +7,7 @@ import './App.css';
 import image1 from './Static/VTHacksLogo.png';
 import image2 from './Static/mlh-logo-color.png';
 import image3 from './Static/ezgif.com-webp-to-png.png';
+import { ScrollView } from '@aws-amplify/ui-react';
 
 const App = () => {
   const [subject, setSubject] = useState('');
@@ -67,8 +68,9 @@ const App = () => {
   };
 
   return (
+    <body>
     <div className="container mt-5 dashboard-background">
-    <div className="row d-flex justify-content-center">
+    <div className="row d-flex justify-content-center margin-bottom: auto">
       <h1 className="text-center" style={{ fontFamily: 'Eiko', fontSize: '50px', marginBottom: "2%"}}>Course Curve</h1>
       <div className="mb-3 col-md-6">
         <label htmlFor="subject" className="form-label">Subject:</label>
@@ -195,9 +197,11 @@ const App = () => {
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
         <button className="btn btn-dark" onClick={handleGenerateScheduleClick} style={{ marginLeft: '10px' }}>Generate Schedule</button>
         <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-          <div>
+          <div className="popup-container">
+            <div className="popup-body">
             {/* Your popup content goes here */}
             <p>This is the popup content.</p>
+            </div>
           </div>
         </Popup>
         <label className="switch" style = {{marginLeft: '10px'}}>
@@ -227,13 +231,19 @@ const App = () => {
             ))}
           </tbody>
         </table>
+
       {/* Add a new container for the images at the bottom */}
-      <div className="img-container"> 
-          <img src={image1} alt="Image 1" className="vt-icon" />
-          <img src={image3} alt="Image 3" className="git-icon" />
-          <img src={image2} alt="Image 2" className="mlh-icon" />
+      <footer>
+      <div className="img-container" style={{display: 'flex',  justifyContent:'space-evenly', alignItems:'normal', height: '20vh'}}> 
+          <a href='https://vthacks.com/'><img src={image1} alt="1" className="vt-icon"/></a>
+          
+          <a href='https://github.com/salvadorbu/CourseScheduler/'> <img src={image3} alt="3" className="git-icon" /></a>
+
+          <a href='https://mlh.io/'> <img src={image2} alt="2" className="mlh-icon" /></a>
       </div>
+      </footer>
     </div>
+    </body>
   );
 };
 
