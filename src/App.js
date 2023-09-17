@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
-import './Static/dotted_line.jpg';
 
 const App = () => {
   const [subject, setSubject] = useState('');
   const [classNumber, setClassNumber] = useState('');
   const [tableData, setTableData] = useState([]);
+  const [accessibilityMode, setIsSwitchOn] = useState(false);
+
+  const handleSwitchChange = () => {
+    setIsSwitchOn(!accessibilityMode);
+  };
 
   const handleSubjectChange = (event) => {
     setSubject(event.target.value);
@@ -36,9 +40,9 @@ const App = () => {
   };
 
   return (
-    <div className="container mt-5" style={{ background: '#e9e9e9' }}>
+    <div className="container mt-5 dashboard-background">
     <div className="row d-flex justify-content-center">
-      <h1 className="text-center" style={{ fontFamily: 'Eiko', fontSize: '50px'}}>Class Schedule</h1>
+      <h1 className="text-center" style={{ fontFamily: 'Eiko', fontSize: '50px', marginBottom: "2%"}}>Course Curve</h1>
       <div className="mb-3 col-md-6">
         <label htmlFor="subject" className="form-label">Subject:</label>
         <select id="subject" className="form-select" value={subject} onChange={handleSubjectChange}>
@@ -163,6 +167,11 @@ const App = () => {
       <div className="col-md-6 mb-3">
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
         <button className="btn btn-dark" onClick={handleAddRow} style={{ marginLeft: '10px' }}>Generate Schedule</button>
+          <label className="switch" style = {{marginLeft: '10px'}}>
+            <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
+            <span className="slider round"></span>
+          </label>
+          {/* <p>Accessibility Mode {accessibilityMode ? 'ON' : 'OFF'}</p> */}
       </div>
 
       <table className="table mt-3">
@@ -186,6 +195,7 @@ const App = () => {
         </tbody>
       </table>
     </div>
+
   );
 };
 

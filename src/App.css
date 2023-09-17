@@ -1,9 +1,17 @@
 
 
 body {
-  background-image: url('./Static/background2.svg'); /* Adjust the path as needed */
+  background-image: url('./Static/background2.svg');
   background-size: cover;
   background-attachment: fixed;
+}
+
+.dashboard-background {
+  background-size: 30%;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(233, 233, 233, 0.7);
 }
 
 
@@ -48,21 +56,68 @@ body {
 
 @font-face {
   font-family: 'Eiko';
-  src: url('../Static/Eiko.otf') format('opentype');
+  src: url('./Static/Eiko.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'Dryouth';
-  src: url('../Static/Dryouth.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
+/* Accessibility Mode Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
 }
 
 
-:root {
-  /* Define CSS HEX variables for the color palette */
+/* Color Pallette */
+/* :root {
   --beaver: #b98b73ff;
   --buff: #cb997eff;
   --desert-sand: #ddbea9ff;
@@ -72,27 +127,4 @@ body {
   --sage: #a5a58dff;
   --reseda-green: #6b705cff;
   --black-olive: #3f4238ff;
-}
-
-/* Apply the colors to your elements */
-/* .container {
-  background: var(--desert-sand);
-}
-
-h1 {
-  color: var(--champagne-pink);
-}
-
-.form-label,
-.form-control {
-  color: var(--ash-gray);
-}
-
-.btn-dark {
-  background-color: var(--black-olive);
-  color: white;
-}
-
-.table {
-  background-color: var(--buff);
 } */
