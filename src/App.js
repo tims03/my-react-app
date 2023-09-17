@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
 
@@ -37,6 +38,22 @@ const App = () => {
     const updatedTableData = [...tableData];
     updatedTableData.splice(index, 1);
     setTableData(updatedTableData);
+  };
+
+  const submit = () => {
+    const requestData = tableData.map((row) => ({
+      subject: row.subject,
+      subjectID: row.classNumber, 
+      accessibleRouting: accessibilityMode,
+    }));
+    console.log(requestData);
+    axios.post('/submit', requestData)
+      .then((response) => {
+        console.log('Data sent successfully:', response.data);
+      })
+      .catch((error) => {
+        console.error('Error sending data:', error);
+      });
   };
 
   return (
@@ -166,7 +183,7 @@ const App = () => {
 
       <div className="col-md-6 mb-3">
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
-        <button className="btn btn-dark" onClick={handleAddRow} style={{ marginLeft: '10px' }}>Generate Schedule</button>
+        <button className="btn btn-dark" onClick={submit} style={{ marginLeft: '10px' }}>Generate Schedule</button>
           <label className="switch" style = {{marginLeft: '10px'}}>
             <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
             <span className="slider round"></span>
