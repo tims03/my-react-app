@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+// npm install reactjs-popup --save
+import Popup from 'reactjs-popup';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Import Bootstrap CSS
 import './App.css';
@@ -8,6 +10,11 @@ const App = () => {
   const [classNumber, setClassNumber] = useState('');
   const [tableData, setTableData] = useState([]);
   const [accessibilityMode, setIsSwitchOn] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleGenerateScheduleClick = () => {
+    setIsPopupOpen(true);
+  };
 
   const handleSwitchChange = () => {
     setIsSwitchOn(!accessibilityMode);
@@ -183,12 +190,18 @@ const App = () => {
 
       <div className="col-md-6 mb-3">
         <button className="btn btn-dark" onClick={handleAddRow}>Add Row</button>
-        <button className="btn btn-dark" onClick={submit} style={{ marginLeft: '10px' }}>Generate Schedule</button>
-          <label className="switch" style = {{marginLeft: '10px'}}>
-            <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
-            <span className="slider round"></span>
-          </label>
-          {/* <p>Accessibility Mode {accessibilityMode ? 'ON' : 'OFF'}</p> */}
+        <button className="btn btn-dark" onClick={handleGenerateScheduleClick} style={{ marginLeft: '10px' }}>Generate Schedule</button>
+        <Popup open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
+          <div>
+            {/* Your popup content goes here */}
+            <p>This is the popup content.</p>
+          </div>
+        </Popup>
+        <label className="switch" style = {{marginLeft: '10px'}}>
+          <input type="checkbox" onChange={handleSwitchChange} checked={accessibilityMode} />
+          <span className="slider round"></span>
+        </label>
+        {/* <p>Accessibility Mode {accessibilityMode ? 'ON' : 'OFF'}</p> */}
       </div>
 
       <table className="table mt-3">
