@@ -14,7 +14,113 @@ const App = () => {
   const [tableData, setTableData] = useState([]);
   const [accessibilityMode, setIsSwitchOn] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  var responseData = null;
+  var responseData = [
+    [
+        {
+            "subject": "MATH",
+            "courseNo": "2114",
+            "instructor": "J Wells",
+            "startTime": "10:10AM",
+            "endTime": "11:00AM",
+            "building": "RAND",
+            "room": "222",
+            "crn": "87127",
+            "gpa": 3.287391304
+        },
+        {
+            "subject": "MATH",
+            "courseNo": "2114",
+            "instructor": "J Wells",
+            "startTime": "11:15AM",
+            "endTime": "12:05PM",
+            "building": "RAND",
+            "room": "318",
+            "crn": "87129",
+            "gpa": 3.287391304
+        },
+        {
+            "subject": "MATH",
+            "courseNo": "2114",
+            "instructor": "DM Kim",
+            "startTime": "2:00PM",
+            "endTime": "3:15PM",
+            "building": "MCB",
+            "room": "232",
+            "crn": "87137",
+            "gpa": 3.2725
+        }
+    ],
+    [
+        {
+            "subject": "CHEM",
+            "courseNo": "1035",
+            "instructor": "J Bowen",
+            "startTime": "11:15AM",
+            "endTime": "12:05PM",
+            "building": "DAV",
+            "room": "281",
+            "crn": "82701",
+            "gpa": 3.1125
+        },
+        {
+            "subject": "CHEM",
+            "courseNo": "1035",
+            "instructor": "SM Arachchige",
+            "startTime": "10:10AM",
+            "endTime": "11:00AM",
+            "building": "DAV",
+            "room": "281",
+            "crn": "82702",
+            "gpa": 2.845641026
+        },
+        {
+            "subject": "CHEM",
+            "courseNo": "1035",
+            "instructor": "SM Arachchige",
+            "startTime": "9:05AM",
+            "endTime": "9:55AM",
+            "building": "DAV",
+            "room": "281",
+            "crn": "82707",
+            "gpa": 2.845641026
+        }
+    ],
+    [
+        {
+            "subject": "CS",
+            "courseNo": "1114",
+            "instructor": "H Hillman",
+            "startTime": "5:00PM",
+            "endTime": "7:30PM",
+            "building": "NCB",
+            "room": "130B",
+            "crn": "83282",
+            "gpa": 2.706
+        },
+        {
+            "subject": "CS",
+            "courseNo": "1114",
+            "instructor": "H Hillman",
+            "startTime": "3:30PM",
+            "endTime": "4:20PM",
+            "building": "TORG",
+            "room": "3100",
+            "crn": "83285",
+            "gpa": 2.706
+        },
+        {
+            "subject": "CS",
+            "courseNo": "1114",
+            "instructor": "H Hillman",
+            "startTime": "5:30PM",
+            "endTime": "8:00PM",
+            "building": "NCB",
+            "room": "130A",
+            "crn": "83286",
+            "gpa": 2.706
+        }
+    ]
+]
 
   const handleGenerateScheduleClick = (data) => {
     submit();
@@ -64,7 +170,6 @@ const App = () => {
       })
       .catch((error) => {
         console.error('Error sending data:', error);
-        setIsPopupOpen(true);
       });
   };
 
